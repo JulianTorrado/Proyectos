@@ -1,6 +1,7 @@
 <?php
 require_once 'models/Auth.php';
 require_once 'models/Etapa.php';
+require_once 'menu.controller.php';
 
 class EtapasController
 {
@@ -23,7 +24,7 @@ class EtapasController
         if (isset($_REQUEST['id'])) {
             $Etapas = $this->model->Obtener($_REQUEST['id']);
         }
-        require_once 'views/Etapas/crud.php';
+        require_once 'views/etapas/crud.php';
     }
 
 
@@ -32,7 +33,7 @@ class EtapasController
         $etapa = new Etapa();
         $etapa->proyecto_id    = $_REQUEST['proyecto_id'];
         $etapa->notacion = $_REQUEST['notacion'];
-        $etapa->id > 0 ?
+        echo $etapa->id > 0 ?
             $this->model->Actualizar($etapa)
             : $this->model->Registrar($etapa);
     }
@@ -42,8 +43,10 @@ class EtapasController
     {
         $Etapas = new Etapa();
         $proyecto = $this->model->Obtener($_REQUEST['pid']);
-        require_once 'views/layouts/header.php';
-        require_once 'views/Etapas/gestion.php';
+        $menu = new MenuController();
+        $menu->layout();
+        //require_once 'views/layouts/header.php';
+        require_once 'views/etapas/gestion.php';
         // require_once 'views/layouts/footer.php';
 
     }
@@ -52,7 +55,7 @@ class EtapasController
     {
         $Etapas = new Etapa();
         $proyecto = $this->model->Obtener($_REQUEST['pid']);
-        require_once 'views/Etapas/ver.php';
+        require_once 'views/etapas/ver.php';
     }
     public function Etapa()
     {

@@ -1,0 +1,48 @@
+[28-Jul-2022 17:20:39 UTC] PHP Fatal error:  Uncaught Error: Object of class PDO could not be converted to string in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 15
+[28-Jul-2022 17:22:25 UTC] PHP Notice:  Undefined index: auth in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 23
+[28-Jul-2022 17:22:25 UTC] PHP Notice:  Undefined index: auth in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 25
+[28-Jul-2022 17:22:47 UTC] PHP Notice:  Undefined index: auth in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 23
+[28-Jul-2022 17:22:47 UTC] PHP Notice:  Undefined index: auth in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 25
+[28-Jul-2022 17:22:51 UTC] PHP Notice:  Undefined index: auth in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 23
+[28-Jul-2022 17:22:51 UTC] PHP Notice:  Undefined index: auth in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 25
+[28-Jul-2022 17:22:57 UTC] PHP Notice:  Undefined index: auth in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 22
+[28-Jul-2022 17:22:57 UTC] PHP Notice:  Undefined index: auth in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 24
+[28-Jul-2022 17:23:40 UTC] PHP Fatal error:  Uncaught Error: Using $this when not in object context in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php:25
+Stack trace:
+#0 {main}
+  thrown in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 25
+[28-Jul-2022 17:24:23 UTC] PHP Notice:  Undefined variable: data in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 27
+[28-Jul-2022 17:24:23 UTC] PHP Notice:  Trying to get property 'nombres' of non-object in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 27
+[28-Jul-2022 17:24:23 UTC] PHP Notice:  Undefined variable: data in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 28
+[28-Jul-2022 17:24:23 UTC] PHP Notice:  Trying to get property 'apellidos' of non-object in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 28
+[28-Jul-2022 17:24:23 UTC] PHP Notice:  Undefined variable: data in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 29
+[28-Jul-2022 17:24:23 UTC] PHP Notice:  Trying to get property 'identificacion' of non-object in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 29
+[28-Jul-2022 17:24:23 UTC] PHP Warning:  Creating default object from empty value in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 30
+[28-Jul-2022 17:32:09 UTC] PHP Notice:  Undefined index: identificacion in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 30
+[28-Jul-2022 17:32:09 UTC] PHP Notice:  Undefined index: reg_fec in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 34
+[28-Jul-2022 17:36:59 UTC] PHP Notice:  Undefined index: reg_fec in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 34
+[28-Jul-2022 17:41:04 UTC] PHP Parse error:  syntax error, unexpected ',' in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 20
+[28-Jul-2022 17:41:28 UTC] PHP Parse error:  syntax error, unexpected ',' in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 26
+[16-Sep-2022 15:17:42 UTC] PHP Notice:  Undefined index: identificacion in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 23
+[16-Sep-2022 15:17:42 UTC] PHP Notice:  Undefined index: asunto in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 25
+[16-Sep-2022 15:17:42 UTC] PHP Notice:  Undefined index: auth in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 26
+[16-Sep-2022 15:18:11 UTC] PHP Notice:  Undefined index: identificacion in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 23
+[16-Sep-2022 15:18:11 UTC] PHP Notice:  Undefined index: asunto in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 25
+[16-Sep-2022 15:21:33 UTC] PHP Notice:  Undefined index: identificacion in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 23
+[16-Sep-2022 15:21:33 UTC] PHP Notice:  Undefined index: asunto in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 25
+[16-Sep-2022 15:21:33 UTC] PHP Notice:  Undefined index: auth in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 26
+[16-Sep-2022 15:21:48 UTC] PHP Notice:  Undefined index: identificacion in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 23
+[16-Sep-2022 15:21:48 UTC] PHP Notice:  Undefined index: asunto in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 25
+[16-Sep-2022 15:28:29 UTC] PHP Notice:  Undefined index: identificacion in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 23
+[16-Sep-2022 15:28:29 UTC] PHP Notice:  Undefined index: asunto in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 25
+[16-Sep-2022 15:28:56 UTC] PHP Notice:  Undefined index: identificacion in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 23
+[16-Sep-2022 15:28:56 UTC] PHP Notice:  Undefined index: asunto in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 25
+[16-Sep-2022 15:29:33 UTC] PHP Notice:  Undefined index: identificacion in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 23
+[16-Sep-2022 15:29:33 UTC] PHP Notice:  Undefined index: asunto in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 25
+[16-Sep-2022 15:32:36 UTC] PHP Notice:  Undefined index: auth in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 26
+[16-Sep-2022 15:34:23 UTC] PHP Notice:  Undefined index: auth in /home/documentalsg/public_html/Proyectos/contacto/bootstrap/procesar.php on line 26
+[03-Oct-2023 09:18:33 America/Bogota] PHP Notice:  Undefined index: registro in /home2/documentalsg/public_html/Proyectos/contactosNom/bootstrap/procesar.php on line 25
+[03-Oct-2023 09:21:14 America/Bogota] PHP Notice:  Undefined index: registro in /home2/documentalsg/public_html/Proyectos/contactosNom/bootstrap/procesar.php on line 25

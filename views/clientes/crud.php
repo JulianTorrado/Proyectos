@@ -19,6 +19,12 @@
                     </div>
                     <div class="col-4">
                         <div class="form-group">
+                            <label for="nombre">Empresa</label>
+                            <input type="text" name="empresa" class="form-control" value='<?php  ?>' required>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
                             <label for="nombre">Correo</label>
                             <input type="email" name="correo" class="form-control" value='<?php echo $cliente->correo ?>' required>
                         </div>
@@ -67,7 +73,7 @@
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="nombre">Enteresado En</label>
+                                <label for="nombre">Interesado En</label>
                                 <input type="text" name="interesado_en" class="form-control" value='<?php echo $cliente->interesado_en ?>' required>
                             </div>
                         </div>
@@ -107,6 +113,10 @@
 </div>
 <script>
     $(document).on('click', '#guardar', function(e) {
+        //var msj = '';
+        //if($('#dage_personas_cargo').val() == '') msj += 'Escriba las personas a cargo. Si el campo no corresponde escribir No aplica\n';
+        // if (msj != '') alert(msj);
+		// else
         var data = $("#formdata").serialize();
         $("#index").modal('hide'); //ocultamos el modal
         $.ajax({
@@ -116,12 +126,13 @@
             success: function(data) {
                 Swal.fire({
                         icon: 'success',
-                        title: 'El cliente se creo con exito',
+                        //title: 'El cliente se creo con exito',
+                        title: data,
                         showConfirmButton: false,
-                        timer: 1500
+                        //timer: 1500
                     },
                     setTimeout(function() {
-                        window.location.reload(1);
+                      // window.location.reload(1);
                     }, 1500)
                 )
             }

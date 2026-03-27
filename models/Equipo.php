@@ -10,6 +10,8 @@ class Equipo
     public $cliente_id;
     public $proceso_id;
 
+    public $usuario_id;
+
 
 
 
@@ -30,7 +32,7 @@ class Equipo
 
         try {
             $stm = $this->pdo->prepare("SELECT  equipos.*, procesos.proceso FROM equipos, procesos, clientes
-                                              WHERE cliente_id=$id
+                                              WHERE clientes.id=$id
                                               AND equipos.cliente_id=clientes.id
                                               AND equipos.proceso_id=procesos.id");
             $stm->execute();
@@ -73,11 +75,10 @@ class Equipo
 
     public function Registrar(Equipo $data)
     {
-
         try {
 
-            $stm = "INSERT INTO equipos(cliente_id, proceso_id, nombres, apellidos, contacto, correo)
-                             VALUES(?, ?, ?, ?, ?, ?)";
+            $stm = "INSERT INTO equipos(cliente_id, proceso_id, nombres, apellidos, contacto, correo,usuario_id)
+                             VALUES(?, ?, ?, ?, ?, ?,?)";
             $this->pdo->prepare($stm)->execute(array(
                 $data->cliente_id,
                 $data->proceso_id,
@@ -85,7 +86,7 @@ class Equipo
                 $data->apellidos,
                 $data->contacto,
                 $data->correo,
-
+                $data->usuario_id,
             ));
         } catch (Exception $e) {
             die($e->getMessage());

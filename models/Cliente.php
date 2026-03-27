@@ -5,6 +5,7 @@ class Cliente
     public $id;
     public $nombre;
     public $apellidos;
+    public $empresa;
     public $correo;
     public $telefono;
     public $nit;
@@ -15,6 +16,8 @@ class Cliente
     public $tipo_cliente_id;
     public $clie_id;
     public $link;
+    public $estado_id;
+
 
 
     public function __CONSTRUCT()
@@ -92,6 +95,19 @@ class Cliente
         }
     }
 
+public function Interesados()
+    {
+
+        try {
+            $result = array();
+            $stm = $this->pdo->prepare("SELECT * from interesados");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function Obtener($id)
     {
 
@@ -110,11 +126,12 @@ class Cliente
 
         try {
 
-            $stm = "INSERT INTO clientes(nombre, apellidos, correo, telefono, nit,   ubicacion, potencial, interesado_en, como_se_entero, estado_id, tipo_cliente_id)
-                             VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $this->pdo->prepare($stm)->execute(array(
+            $stm = "INSERT INTO clientes(nombre, apellidos, nombreEmpresa, correo, telefono, nit,   ubicacion, potencial, interesado_en, como_se_entero, estado_id, tipo_cliente_id)
+                             VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $result = $this->pdo->prepare($stm)->execute(array(
                 $data->nombre,
                 $data->apellidos,
+                $data->empresa,
                 $data->correo,
                 $data->telefono,
                 $data->nit,
@@ -125,6 +142,11 @@ class Cliente
                 $data->estado_id,
                 $data->tipo_cliente_id
             ));
+            if($result){
+                echo "Registro existoso";
+            }else{
+                echo "Fallo en el registro";
+            }
         } catch (Exception $e) {
             die($e->getMessage());
         }

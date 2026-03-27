@@ -1,71 +1,3 @@
-<?php
-/*
-$curl = curl_init();
-
-curl_setopt_array($curl, [
-	CURLOPT_URL => "https://api-football-v1.p.rapidapi.com/v3/transfers?team=33",
-	CURLOPT_RETURNTRANSFER => true,
-	CURLOPT_FOLLOWLOCATION => true,
-	CURLOPT_ENCODING => "",
-	CURLOPT_MAXREDIRS => 10,
-	CURLOPT_TIMEOUT => 30,
-	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-	CURLOPT_CUSTOMREQUEST => "GET",
-	CURLOPT_HTTPHEADER => [
-		"X-RapidAPI-Host: api-football-v1.p.rapidapi.com",
-		"X-RapidAPI-Key: a7c35fe285msh8f8646b7314d98bp16db00jsnf180dbe02805"
-	],
-]);
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-
-curl_close($curl);
-
-if ($err) {
-	echo "cURL Error #:" . $err;
-} else {
-  //echo $response;
-  //$res = json_encode($response);
-   $objeto = json_decode($response);
-
-  //print_r($objeto);
-  $get= $objeto->get;
-  $parameters= $objeto->parameters;
-  $parameters= $objeto->parameters->team;
-  $results= $objeto->results;
-  $response= $objeto->response;
-  echo '<pre>';
-  print_r($response);
-  echo '</pre>';
- // print_r($objetos[0]->player);
-} 
-
-/*while ($response) {
-    # code...
-    echo $response->player;
-}*/
-
-?>
-<!--
- <table>
-     <tr>
-         <th></th>
-     </tr>
-     <?php foreach($response as $value):?>
-     <tr>
-         <td><?php echo $value->name ?> </td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-     </tr>
-     <?php endforeach;?>
- </table>
-     -->
-
-
 <section>
     <div class="container-fluid">
         <div class="col-12">
@@ -107,6 +39,49 @@ if ($err) {
                     </div>
                 </div>
                 <div class="col-md-12">
+                    <div class="card card-danger collapsed-card">
+                        <div class="card-header"> <i class="far fa-handshake"> </i> Actividades pendientes
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div  class="table-responsive">
+                                <table id="example1" class="table table-bordered table-sm" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Actividad</th>
+                                            
+                                            <th>Fecha</th>
+                                            <th>Proyecto/Cliente</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($actividades as $valueec) : ?>
+                                            <tr>
+                                                <td><?php echo $valueec->actividad ?> </td>
+                                                
+                                                <td><?php echo $valueec->hfecha ?></td>
+                                                <td><?php echo $valueec->pro ?><br><?php echo $valueec->nombre ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Actividad</th>
+                                            
+                                            <th>Fecha</th>
+                                            <th>Proyecto/Cliente</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
                     <div class="card card-secondary  collapsed-card">
                         <div class="card-header"> <i class="far fa-handshake"> </i> Compromisos pendientes
                             <div class="card-tools">
@@ -117,7 +92,7 @@ if ($err) {
                         </div>
                         <div class="card-body">
                             <div  class="table-responsive">
-                                <table id="example1" class="table table-bordered table-sm" style="width: 100%;">
+                                <table id="examplee1" class="table table-bordered table-sm" style="width: 100%;">
                                     <thead>
                                         <tr>
                                             <th>Actividad</th>
@@ -140,6 +115,49 @@ if ($err) {
                                         <tr>
                                             <th>Actividad</th>
                                             <th>Descripcion</th>
+                                            <th>Fecha</th>
+                                            <th>Proyecto/Cliente</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card card-success  collapsed-card">
+                        <div class="card-header"> <i class="far fa-handshake"> </i> Actividades terminadas
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div  class="table-responsive">
+                                <table id="actividadesf" class="table table-bordered table-sm" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Actividad</th>
+                                            
+                                            <th>Fecha</th>
+                                            <th>Proyecto/Cliente</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($actividadf as $valuuec) : ?>
+                                            <tr>
+                                                <td><?php echo $valuuec->actividad ?> </td>
+                                                
+                                                <td><?php echo $valuuec->hfecha ?></td>
+                                                <td><?php echo $valuuec->pro ?><br><?php echo $valuuec->nombre ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Actividad</th>
+                                            
                                             <th>Fecha</th>
                                             <th>Proyecto/Cliente</th>
                                         </tr>
@@ -197,7 +215,7 @@ if ($err) {
     <div class="container-fluid">
         <div class="col-12">
             <div class="row">
-                <?php foreach ($planear as $value3) : ?>
+                <?php foreach ($planear as $value3) : //print_r($value3); ?>
                     <div class="col-4">
                         <div class="card card-danger collapsed-card">
                             <div class="card-header small " style="color:whitesmoke"><i class=" fas fa-tasks "> </i>  <?php echo  $value3->cli_nom ?>
@@ -220,7 +238,7 @@ if ($err) {
                                                 echo $intvl->y . " Años, " . $intvl->m . " meses y " . $intvl->d . " dias";
                                                 echo "\n"; ?></li>
                                             <li><?php    // Total amount of days                                  
-                                                echo 'Total:  ' . $i = $intvl->days . " dias ";
+                                                 echo 'Total:  ' . $i = $intvl->days . " dias ";
                                                 ?></li>
                                         </ul>
                                     </li>
@@ -245,7 +263,19 @@ if ($err) {
                                     </ul>
                                     </li>
                                 </ul>
-                            </div>
+                                <span> <?php   $hechas= $this->model->Hechas($value3->p_id);
+                                                           $nohechas= $this->model->NoHechas($value3->p_id);
+                                                           echo 'Total:'.( $total= $hechas->hecha + $nohechas->nohecha);
+                                                           echo '<br>Realizadas:'.$hechas->hecha;
+                                                           echo '<br>Pendientes:'.$nohechas->nohecha;
+                                                           echo '<br>Avance:'.  @$avance=number_format($hechas->hecha/$total*100,2).'%'; 
+                                                         ?></span>
+                            
+                            <div class="progress progress-sm">
+
+                                                <div class="progress-bar success" style="width: <?php echo  $avance ?>"></div>
+                                            </div>
+                                            </div>
                             <div class="card-footer ">
                                 <span>Avance: </span>
                                 <div class="btn-group float-right" role="group" aria-label="Basic example">

@@ -1,6 +1,7 @@
 <?php
 require_once 'models/Auth.php';
 require_once 'models/Seguimiento.php';
+require_once 'menu.controller.php';
 
 class SeguimientosController
 {
@@ -13,8 +14,10 @@ class SeguimientosController
     }
 
     public function Index()
-    {;
-        require_once 'views/layouts/header.php';    
+    {
+        $menu = new MenuController();
+        $menu->layout();
+        // require_once 'views/layouts/header.php';    
         $seguimientos=$this->model->Obtener($_REQUEST['cli_id']);   
         require_once 'views/Seguimientos/index.php';
         require_once 'views/layouts/footer.php';

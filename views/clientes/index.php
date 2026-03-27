@@ -23,7 +23,7 @@
                             <tbody>
                                 <?php foreach ($clientes as $cliente) : ?>
                                     <tr>
-                                        <td><?php echo  strtoupper($cliente->nombre); ?>
+                                        <td><?php echo  strtoupper($cliente->nombre.' '.$cliente->apellidos); ?>
                                             <?php foreach ($seguimientos as $seguimiento) : ?>
                                                 <?php if ($seguimiento->cliente_id == $cliente->cli_id) : ?>
                                                     <a href="?c=seguimientos&a=index&cli_id=<?php echo $cliente->cli_id ?>"><span class="right badge badge-success"><?php echo  $seguimiento->cant ?> Seguimientos</span></a>
@@ -45,10 +45,13 @@
                                         </td>
                                         <td><?php echo  $cliente->potencial ?></td>
                                         <td><?php echo  $cliente->estado_id ? 'Activo' : 'Inactivo'; ?></td>
-                                        <td>
+                                        <td style="vertical-align: middle;text-align: center;">
                                             <?php if ($cliente->tipo_cliente == 'Cliente') : ?>
-                                                <a class="" onclick="Equipo('<?php echo $cliente->cli_id ?>')" data-toggle="modal" data-target="#modal-default" title="Registrar miembro del equipo de trabajo "><i class="fa fa-user"></i></a>
-                                                <a href="?c=equipos&a=index&cli_id=<?php echo $cliente->cli_id ?>" class="" title="Gestionar Equipo de trabajo "><i class="fa fa-users"></i></a>
+                                                <a class="" onclick="Equipo('<?php echo $cliente->cli_id ?>')" data-toggle="modal" data-target="#modal-default" title="Registrar miembro del equipo de trabajo "><i  class="fa fa-user"></i></a>
+                                                <!-- ASIGNAR USUARIO A EQUIPO Y PROCESO -->
+                                                <a class="" onclick="asignarUsuarios('<?php echo $cliente->cli_id ?>')" data-toggle="modal" data-target="#modal-default" title="Asignar usuario al equipo"><i style="color:orange" class="fa fa-user-plus"></i></a>
+
+                                                <a href="?c=equipos&a=index&cli_id=<?php echo $cliente->cli_id ?>" class="" title="Gestionar Equipo de trabajo "><i style="color:green" class="fa fa-users"></i></a>
                                             <?php endif; ?>
                                         </td>
                                         <td>
@@ -64,18 +67,7 @@
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
-                            <tfooter>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Nit</th>
-                                    <th>Ubicacion</th>
-                                    <th>Tipo</th>
-                                    <th>Potencial</th>
-                                    <th>Estado</th>
-                                    <th>Equipo</th>
-                                    <th>Menu</th>
-                                </tr>
-                            </tfooter>
+                            
                         </table>
                     </div>
                 </div>
@@ -89,15 +81,21 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-body">
+                <!-- Botón de cerrar -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
                 <div class="index" id="index">
                 </div>
             </div>
-            <!-- /.modal-content -->
+            <!-- /.modal-body -->
         </div>
-        <!-- /.modal-dialog -->
+        <!-- /.modal-content -->
     </div>
-    <!-- /.modal -->
+    <!-- /.modal-dialog -->
 </div>
+
 
 
 <script>
@@ -169,6 +167,19 @@
         });
     }
 
+    function asignarUsuarios(id) {
+        $.ajax({
+            type: "POST",
+            url: '?c=equipos&a=CrudAsignar',
+            data: {
+                clie_id: id
+            },
+            success: function(resp) {
+                $('#index').html(resp);
+                $('#respuesta').html("");
+            }
+        });
+    }
 
 
     function Soporte(id) {

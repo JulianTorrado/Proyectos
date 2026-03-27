@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (isset($_SESSION['REMOTE_ADDR'])) {
   if ($_SESSION['REMOTE_ADDR'] != $_SERVER['REMOTE_ADDR'] || $_SESSION['HTTP_USER_AGENT'] != $_SERVER['HTTP_USER_AGENT']) {
     //terminar la session
@@ -7,18 +6,23 @@ if (isset($_SESSION['REMOTE_ADDR'])) {
     http_response_code(403);
     die;
   }
-} else {
+} else {//session_start();
+
   header('Location: ../Proyectos');
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calidad Sg</title>
+  <!-- ESTILOS RESPONSIVE -->
+  <link rel="stylesheet" href="assets/dist/css/responsive2.css">
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
   <!-- DataTables -->
@@ -26,11 +30,25 @@ if (isset($_SESSION['REMOTE_ADDR'])) {
   <link rel="stylesheet" href="assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <link rel="stylesheet" href="assets/plugins/full_calendar/css/fullcalendar.css" type="text/css" />
+
   <!-- Theme style -->
   <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
   <script src="assets/plugins/jquery/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- <script src="assets\dist\js\validaciones.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+  
+
+  <!-- SweetAlert CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- <style>
+    @media (max-width: 720px) {
+      #Graficas {
+        display: none !important;
+      }
+    }
+  </style> -->
+
 </head>
 
 <body class="hold-transition sidebar-mini sidebar-collapse">
@@ -45,12 +63,12 @@ if (isset($_SESSION['REMOTE_ADDR'])) {
         </li>
       </ul>
       <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto">     
-<!-- Notifications Dropdown Menu -->
-         
-         <li class="nav-item" >
-          <a class="nav-link " data-widget="fullscreen" href="#" role="button">
-            <i class="fas fa-user"> <?php  echo strtoupper($_SESSION['fullName']);?></i>
+      <ul class="navbar-nav ml-auto">
+        <!-- Notifications Dropdown Menu -->
+
+        <li class="nav-item">
+          <a  class="nav-link res-tittle" data-widget="fullscreen" href="#" role="button">
+            <i class="fas fa-user"> <?php echo strtoupper($_SESSION['fullName']); ?></i>
           </a>
         </li>
         <li class="nav-item">
@@ -58,7 +76,7 @@ if (isset($_SESSION['REMOTE_ADDR'])) {
             <i class="fas fa-expand-arrows-alt"></i>
           </a>
         </li>
-        
+
         </li>
         <li class="nav-item">
           <a href="?c=usuarios&a=cerrar" class="nav-link">
@@ -72,9 +90,9 @@ if (isset($_SESSION['REMOTE_ADDR'])) {
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="#" class="brand-link">
-        <img src="assets\dist\img\firma.png" alt="Logo" class="brand-image " style="opacity: .8">
-        <span class="brand-text font-weight-light">FCsg</span>
+      <a href="?c=usuarios&a=home" class="brand-link">
+        <img src="assets\dist\img\prueba.png" alt="Logo" class="brand-image " style="opacity: .8">
+        <span class="brand-text font-weight-light">CalidadSG</span>
       </a>
       <!-- Sidebar -->
       <div class="sidebar">
@@ -110,7 +128,7 @@ if (isset($_SESSION['REMOTE_ADDR'])) {
                     <i class="fa fa-key nav-icon"></i>
                     <p>Seguridad</p>
                   </a>
-                </li>                
+                </li>
               </ul>
             </li>
             <li class="nav-item">
@@ -129,6 +147,12 @@ if (isset($_SESSION['REMOTE_ADDR'])) {
                   </a>
                 </li>
                 <li class="nav-item">
+                  <a href="?c=clientes&a=interesados" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Interesados</p>
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a href="?c=clientes&a=index&tp=1" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Prospectos</p>
@@ -142,18 +166,35 @@ if (isset($_SESSION['REMOTE_ADDR'])) {
                 </li>
               </ul>
             </li>
+
+
             <li class="nav-item">
-              <a href="?c=proyectos&a=index" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Proyectos
-                  <span class="right badge badge-danger">Nuevos</span>
+                  <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="?c=proyectos&a=index" class="nav-link">
+                    <i class="far fa-user nav-icon"></i>
+                    <p>Activos</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="?c=proyectos&a=indexoff" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Inactivos</p>
+                  </a>
+                </li>
+              </ul>
             </li>
+
             <li class="nav-item">
               <a href="?c=informes&a=reportes" class="nav-link">
-               <i class="nav-icon fa fa-balance-scale" aria-hidden="true"></i>
+                <i class="nav-icon fa fa-balance-scale" aria-hidden="true"></i>
                 <p>Reporte</p>
               </a>
             </li>

@@ -29,7 +29,7 @@
                                     </div>
                                     <!-- /.widget-user-image -->
                                     <h5 class="widget-user-username text-white"><?php echo  ucwords($etapa->notacion) ?></h5>
-                                    <h6 class="text-white"><?php echo ucfirst(strtolower(utf8_decode($objetivo->objetivo))) ?></h6>
+                                    <h6 class="text-white"><?php echo ucfirst(strtolower($objetivo->objetivo)) ?></h6>
                                 </div>
                                 <div class="card-footer p-0">
                                     <ul class="nav flex-column">

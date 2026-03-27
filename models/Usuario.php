@@ -125,4 +125,29 @@ class Usuario
 			die($e->getMessage());
 		}
 	}
+	
+	function Hechas($proyecto_id){
+	    try {
+			$result = array();
+			$stm = $this->pdo->prepare("SELECT count(id) as hecha FROM horarios WHERE estado=1 AND proyecto_id='$proyecto_id' ");
+			$stm->execute();
+			return $stm->fetch(PDO::FETCH_OBJ);
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+	    
+	    
+	}
+	function NoHechas($proyecto_id){
+	    try {
+			$result = array();
+			$stm = $this->pdo->prepare("SELECT count(id) as nohecha FROM horarios WHERE estado=0 AND proyecto_id='$proyecto_id' ");
+			$stm->execute();
+			return $stm->fetch(PDO::FETCH_OBJ);
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+	    
+	    
+	}
 }

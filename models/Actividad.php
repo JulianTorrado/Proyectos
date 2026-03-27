@@ -5,6 +5,7 @@ class Actividad
 	public $id;
 	public $objetivo_id;
 	public $actividad;
+	public $descripcion;
 
 	public function __CONSTRUCT()
 	{
@@ -42,15 +43,13 @@ class Actividad
 
 	public function Registrar(Actividad $data)
 	{
-
-
 		foreach ($data->actividad as $key => $cantidades) {
-			# code...
 			try {
-				$stm = "INSERT INTO actividades(objetivo_id, actividad ,responsable,
-				soporte)
-                             VALUES(?, ?, ? ,?)";
+				// Agregar el nuevo campo 'descripcion' en la consulta SQL
+				$stm = "INSERT INTO actividades(objetivo_id, actividad, responsable, soporte, descripcion)
+                    VALUES(?, ?, ?, ?, ?)";
 
+				// Ejecutar la consulta con los valores correspondientes
 				$this->pdo->prepare($stm)
 					->execute(
 						array(
@@ -58,15 +57,15 @@ class Actividad
 							$data->actividad[$key],
 							$data->proceso[$key],
 							$data->soporte[$key],
-
+							$data->descripcion[$key] // Nuevo campo de descripción
 						)
 					);
 			} catch (Exception $e) {
 				die($e->getMessage());
 			}
-			// return true;
 		}
 	}
+
 
 
 	public function Actualizar(Actividad $data)
@@ -132,9 +131,10 @@ class Actividad
 		}
 	}
 
-	public function Equipo($id){
+	public function Proceso()
+	{
 		try {
-			$stm = $this->pdo->prepare("SELECT * FROM equipos WHERE cliente_id = $id");
+			$stm = $this->pdo->prepare("SELECT * FROM procesos");
 			$stm->execute();
 			return $stm->fetchAll(PDO::FETCH_OBJ);
 		} catch (Exception $e) {
@@ -145,7 +145,7 @@ class Actividad
 
 	public function ReasignarEdit(Actividad $data)
 	{
-          print_r($data);
+
 		try {
 			$result = array();
 			$sql = "UPDATE actividades SET responsable='$data->responsable'  WHERE id = '$data->id'";

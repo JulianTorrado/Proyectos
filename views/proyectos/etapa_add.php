@@ -102,7 +102,7 @@
 				<input type="hidden" id="proyecto_id" name="proyecto_id" value="<?php echo $_REQUEST['pid'] ?>">
 		</div>
 
-		<input type="button" id="guardar" class="btn btn-default btn-block" value="Enviar">
+		<input type="button" id="guardar" class="btn btn-success btn-block" value="Guardar">
 		</form>
 
 	</div>
@@ -136,7 +136,7 @@
 				Swal.fire({
 						icon: 'success',
 						title: 'se creo con exito',
-						showConfirmButton: false,
+						showConfirmButton: true,
 						timer: 1500
 					},
 					setTimeout(function() {

@@ -32,6 +32,19 @@ class Etapa
 		}
 	}
 
+	public function ListarNueva($id)
+	{
+
+		try {
+			$result = array();
+			$stm = $this->pdo->prepare("SELECT * FROM etapasNuevas WHERE proyecto_id =$id");
+			$stm->execute();
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+	}
+
 
 	public function Obtener($id)
 	{
@@ -52,11 +65,12 @@ class Etapa
 		try {
 			$stm = "INSERT INTO etapas(plantilla_id, notacion)
                              VALUES(?, ?)";
-			$this->pdo->prepare($stm)->execute(array(
+			$result = $this->pdo->prepare($stm)->execute(array(
 				$data->proyecto_id,
 				$data->notacion,
 
 			));
+			return $result;
 		} catch (Exception $e) {
 			die($e->getMessage());
 		}

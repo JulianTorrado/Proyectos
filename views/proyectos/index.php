@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-header"><a class="btn btn-default" onclick="Add()" data-toggle="modal" data-target="#modal-default">Nuevo</a></div>
                     <div class="card-body">
-                        <table id="example1" class="table table-bordered">
+                        <table id="example3" class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Proyecto</th>
@@ -33,15 +33,7 @@
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
-                            <tfooter>
-                                <tr>
-                                <th>Proyecto</th>
-                                <th>Cliente</th>
-                                    <th>Fecha Inicio</th>
-                                    <th>Fecha Cierre</th>                                    
-                                    <th>Menu</th>
-                                </tr>
-                            </tfooter>
+                            
                         </table>
                     </div>
                 </div>

@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <script>
-        setTimeout(function() {
+        setTimeout(function () {
             $("#alert").fadeOut('slow');
         }, 2000);
     </script>
@@ -17,14 +17,14 @@
 
 <body>
     <section class="login-block">
-        <div class="container">
+        <div id="login_content" class="container">
             <div class="row">
-                <div class="col-md-4 col-lg-6 login-sec">
-                    <img src="assets\dist\img\user.png" alt="" width="100px" height="auto" class="user">
+                <div class="col-sm-6 login-sec">
+                    <img src="assets\dist\img\logoNuevo.png" alt="" width="100px" height="auto" class="user">
                     <br>
                     <h2 class="text-center">Inicia sesión ahora </h2>
-                    <?php if (isset($_REQUEST['fail'])) : ?>
-                        <div id="alert" class="alert alert-danger" >
+                    <?php if (isset($_REQUEST['fail'])): ?>
+                        <div id="alert" class="alert alert-danger">
                             Clave o usuario incorrecto, verifica y trata de nuevo
                         </div>
                     <?php endif; ?>
@@ -32,22 +32,26 @@
                         <div class="formulario__grupo" id="grupo__usuario">
                             <label for="usuario" class="formulario__label">Usuario</label>
                             <div class="formulario__grupo-input">
-                                <input type="text" class="formulario__input" maxlength="10" name="usuario" id="usuario" placeholder="usuario">
+                                <input type="text" class="formulario__input" maxlength="10" name="usuario" id="usuario"
+                                    placeholder="usuario">
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
-                            <p class="formulario__input-error">El usuario tiene que ser de 4 a 10 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+                            <p class="formulario__input-error">El usuario tiene que ser de 4 a 10 dígitos y solo puede
+                                contener numeros, letras y guion bajo.</p>
                         </div>
                         <br>
                         <div class="formulario__grupo" id="grupo__clave">
                             <label for="clave" class="formulario__label">Contraseña</label>
                             <div class="formulario__grupo-input">
-                                <input type="password" class="formulario__input" maxlength="12" name="clave" placeholder="contraseña" id="clave">
+                                <input type="password" class="formulario__input" maxlength="12" name="clave"
+                                    placeholder="contraseña" id="clave">
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                             </div>
-                            <p class="formulario__input-error">La contraseña tiene que ser de minimo 6 maximo 12 digitos.</p>
+                            <p class="formulario__input-error">La contraseña tiene que ser de minimo 6 maximo 12
+                                digitos.</p>
                         </div>
                         <br>
-                        <div align="center" class="form-check">
+                        <div class="form-check text-center">
                             <button id="login" class="btn btn-login waves-effect">Iniciar Sesión</button>
                         </div>
                     </form>
@@ -55,9 +59,9 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-4 baner-sec">
-                    <img src="assets\dist\img\firma.png" alt="" width="400px" height="auto" class="ml">
-                </div>
+                <!-- <div class="col-md-4 col-lg-4 baner-sec">
+                    <img src="assets\dist\img\logoNuevo.png" alt="" width="400px" height="auto" class="ml">
+                </div>-->
             </div>
         </div>
     </section>
@@ -72,7 +76,7 @@
         background-color: #ecf0f3;
         align-items: center;
         display: flex;
-        float: left;
+        float: right;
         width: 100vw;
         height: 100vh;
         padding: 50px 0;
@@ -88,8 +92,10 @@
 
     .container {
         border-radius: 10px;
-        margin-top: 40px;
+        align-items: center;
+        margin-top: 30px;
         margin-left: 10%;
+
     }
 
     .ml {
@@ -212,5 +218,31 @@
 
     .banner-text p {
         color: #fff;
+    }
+
+    @media (max-width: 720px) {
+        #Graficas {
+            display: none !important;
+        }
+
+        .res-tittle {
+            font-size: 0.75rem !important;
+        }
+
+        .login-sec {
+            width: 100% !important;
+            margin-left: 3%;
+            padding: 6%;
+            background-color: #ecf0f3;
+            border-radius: 10px;
+            box-shadow: 0px;
+        }
+        #login_content{
+            padding-right: 50px;
+        }
+        #login{
+            margin-bottom: 20px;
+        }
+
     }
 </style>

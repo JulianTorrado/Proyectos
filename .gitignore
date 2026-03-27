@@ -1,0 +1,13 @@
+# Ignorar todo lo de Assets
+assets/*
+
+
+
+# Ignore .vscode
+.vscode/
+
+# Ignore .vscode/sftp.json
+
+.vscode/sftp.json
+
+views/soportes/*

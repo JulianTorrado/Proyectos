@@ -1,8 +1,3 @@
-<?php
-echo'<pre>';
- print_r($equipo);
- echo'</pre>';
- ?>
 <div class="card">
     <div class="card-header">
         ::Actualizar Asignación::
@@ -15,29 +10,33 @@ echo'<pre>';
                 <div class="col-md-12">
                     <label for="">Responsable</label>
                         <select name="responsable" id="responsable" class="form-control">
-                           <?php foreach ($equipo as $value):?> 
-                            <option value="<?php echo $value->id ?>"><?php echo $value->nombres." ".$value->apellidos ?> </option>
+                           <?php foreach ($proceso as $value):?> 
+                            <option value="<?php echo $value->id ?>"><?php echo $value->sigla." ".$value->proceso ?> </option>
                             <?php endforeach; ?> 
                         </select>
                 </div>
             </div>
-    </form>
+            
+   
     <div class="card-footer">
-        <button id="save-act" class="btn btn-danger"><i class="fa fa-save"></i> Asignar </button>
+        <input type="button" id="save-act1" value="Guardar" class="btn btn-success">
+        
     </div>
+ </form>
 </div>
-<script type="text/javascript">
+<script src="assets/plugins/jquery/jquery.js"></script>
+<script >
     $(document).ready(function() {
-        $('#save-act').click(function() {
-            if (($('#actividad').val() != "")) {
+        $('#save-act1').click(function() {
+           
                 var datos = $('#form-act').serialize();
                 $.ajax({
-                    async: true,
+                    
                     type: "POST",
                     url: "?c=actividades&a=ReasignarEdit",
                     data: datos,
-                    success: function(r) {
-                        if (datos) {
+                    success: function(data) {
+                      
                             Swal.fire({                                   
                                     icon: 'success',
                                     title: 'la Asignación se Actualizo con éxito',
@@ -45,16 +44,13 @@ echo'<pre>';
                                     timer: 1500
                                 },
                                 setTimeout(function() {
-                                 // window.location.reload(1);
+                                  window.location.reload();
                                 }, 1500)
                             )
-                        }
+                        
                     }
                 });
-            } else {
-                alert('campos vacíos');
-            }
-            return false;
+          
         });
     });
 </script>

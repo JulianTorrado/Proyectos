@@ -1,6 +1,7 @@
 <?php
 require_once 'models/Auth.php';
 require_once 'models/Compromiso.php';
+require_once 'menu.controller.php';
 
 class CompromisosController
 {
@@ -23,7 +24,9 @@ class CompromisosController
     public function Obtener()
     {
         $compromiso = new Compromiso();
-        require_once 'views/layouts/headerc.php';
+        $menu = new MenuController();
+        $menu->layout();
+        //require_once 'views/layouts/headerc.php';
         require_once 'views/horarios/obtener.php';
         // require_once 'views/layouts/footer.php';
     }

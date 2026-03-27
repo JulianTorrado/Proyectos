@@ -30,9 +30,9 @@
 </div>
 </div>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+<!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
   Launch
-</button>
+</button> -->
 <!-- Modal -->
 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">

@@ -1,4 +1,4 @@
-<?php session_start() ?>
+
 <section class="content">
     <div class="container-fluid">
         <div class="col-12"><i>Seguimiento</i></div>

@@ -36,28 +36,21 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-8">
                         <div class="form-group">
                             <label for="">Responsable</label>
-                            <select name="estado" id="estado" class="form-control">
-                                <option value="1">Cumple</option>
-                                <option value="0">Aun No Cumple</option>
+                            <select name="responsable" id="responsable" class="form-control">
+                                <?php  foreach($funcionarios as $value): ?>
+                                <option <?php echo $value->user_id == $horarios->usuario_id ? 'selected':''?> value="<?php echo $value->user_id ?>"  ><?php echo $value->fullName ?></option>
+                                 <?php  endforeach ?>
                             </select>
                         </div>
                     </div>
 
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="">Estado Actividad</label>
-                            <select name="estado" id="estado" class="form-control">
-                                <option value="1">Cumple</option>
-                                <option value="0">Aun No Cumple</option>
-                            </select>
-                        </div>
-                    </div>   
+                       
 
                     <input type="hidden" id="id" name="id" value="<?php echo $horarios->id ?>">
-                    <button id="botonenviar" class=" btn btn-default btn-block">Guardar</button>
+                    <button id="botonenviar" class=" btn btn-success btn-block">Guardar</button>
                     
                 </div>
 

@@ -7,10 +7,12 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                    <button id="addRow" type="button" class="btn btn-default"> <i class='fa fa-plus'></i> Agregar Item</button>
+                    <button id="addRow" type="button" class="btn btn-default"> <i class='fa fa-plus'></i> Agregar
+                        Item</button>
                 </div>
                 <input type="hidden" name="etapa_id" value="<?php echo $_REQUEST['eid'] ?>">
                 <div class="col-md-12">
+                    <br>
                     <label for="">OBJETIVO</label>
                     <textarea name="objetivo[]" class="form-control" required> </textarea>
                 </div>
@@ -19,13 +21,13 @@
         </div>
     </form>
     <div class="card-footer">
-        <button id="save-obj" class="btn btn-danger"><i class="fa fa-save"></i> Guardar </button>
+        <button id="save-obj" class="btn btn-success"><i class="fa fa-save"></i> Guardar </button>
     </div>
 </div>
 
 <script type="text/javascript">
     // agregar registro
-    $("#addRow").click(function() {
+    $("#addRow").click(function () {
         var html = '';
         html += '<div id="inputFormRow">'
         html += '<div class="input-group">'
@@ -43,14 +45,14 @@
     });
 
     // borrar registro
-    $(document).on('click', '#removeRow', function() {
+    $(document).on('click', '#removeRow', function () {
         $(this).closest('#inputFormRow').remove();
     });
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#save-obj').click(function() {
+    $(document).ready(function () {
+        $('#save-obj').click(function () {
             if (($('#objetivo').val() != "")) {
                 var datos = $('#form-obj').serialize();
                 $.ajax({
@@ -58,12 +60,23 @@
                     type: "POST",
                     url: "?c=objetivos&a=registrar",
                     data: datos,
-                    success: function(r) {
+                    success: function (r) {
                         if (r == 1) {
                             alert("Fallo al agregar");
                         } else {
-                            alert("Agregado con éxito!!");
-                            window.location.reload();
+                            // alert("Agregado con éxito!!");
+                            // window.location.reload();
+                            Swal.fire({
+                                title: '¡Registro Exitoso!',
+                                text: 'Tu registro se ha completado satisfactoriamente.',
+                                icon: 'success',
+                                confirmButtonText: 'Aceptar'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    // Recargar la página al cerrar la alerta
+                                    location.reload();
+                                }
+                            });
                         }
                     }
                 });

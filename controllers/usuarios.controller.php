@@ -3,6 +3,10 @@ require_once 'models/Auth.php';
 require_once 'models/Usuario.php';
 require_once 'models/Tipo_usuario.php';
 require_once 'models/Informe.php';
+require_once 'menu.controller.php';
+
+
+
 
 
 class UsuariosController
@@ -23,24 +27,49 @@ class UsuariosController
     public function Home()
     {
         $cliente = new Informe();
-
-        $clientes = $cliente->Clientes();
+        /*$clientes = $cliente->Clientes();
         $proyectos = $cliente->Proyectos();
         $planear = $cliente->Info_planear();
         $horario = $cliente->Info_crono();
         $funcionarios = $cliente->Funcionarios();
         $funci_cumplidas = $cliente->Func_cumplidas();
         $compromisos = $cliente->Compromisos();
-        
-        require_once 'views/layouts/header.php';
-        require_once 'views/informes/home.php';
-        require_once 'views/layouts/footer.php';
+
+        $actividades = $cliente->Actividadesp();
+        $actividadf = $cliente->Actividadesf();
+        $act = new Usuario();
+      
+        $crm = $cliente->TipoCliente();
+        $datosCliente = array();
+        foreach ($crm as $fila) {
+            $datosCliente[] = array(
+                'name' => $fila->tipo_cliente,
+                'value' => $fila->cantidad
+            );
+        }*/
+        /**crm end */
+        // Obtener los datos del modelo
+        /*$datosActividades = $cliente->contarActividadesPorEstado();
+        $d_actividad = array();
+        foreach ($datosActividades as $d_a) {
+            $d_actividad[] = array(
+                'name' => $d_a->cumplidas,
+                'value' => $d_a->no_cumplidas
+            );
+        }
+         $ac=$cliente->ActividadesCumplidas();*/
+        $menu = new MenuController();
+        $menu->usuarioActual();
+        //require_once 'views/layouts/header.php';
+       // require_once 'views/informes/home2.php';
+       // require_once 'views/layouts/footer.php';
     }
+
+
 
 
     public function Cerrar()
     {
-        session_start();
 
         session_reset();
         session_destroy();
@@ -50,30 +79,55 @@ class UsuariosController
             header('Location: ../Proyectos');
         endif;
     }
-
+    
     public function Login()
     {
-
+        
+        
         $seguridad = new Auth();
-        $clave = md5($_REQUEST['clave']);
-        $datos = $seguridad->Auth($_REQUEST['usuario'], $clave);
-
+        @$clave = md5($_REQUEST['clave']);
+        
+        if(isset($_REQUEST['cc'])){
+            @session_start();
+            $clave = md5($_REQUEST['cc']);
+            $datos = $seguridad->Auth($_REQUEST['cc'], $clave);
+        }else{
+            $datos = $seguridad->Auth($_REQUEST['usuario'], $clave);
+        }
+       
+        //echo $_REQUEST['clave']." - ".$_REQUEST['usuario']." - ".$_REQUEST['origen'] ;
+        
         if (!empty($datos)) :
-            session_start();
+           
+            //session_start();
             $_SESSION['uid'] = $datos->id;
             $_SESSION['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
             $_SESSION['HTTP_USER_AGENT'] = $_SERVER['HTTP_USER_AGENT'];
             $_SESSION['fullName'] = $datos->nombres . ' ' . $datos->apellidos;
+            $_SESSION['user_id'] = $datos->id;
+            $_SESSION['rol_id'] = $datos->tipo_usuario;
 
-            echo "<script type='text/javascript'>
+             //print_r ($_SESSION);
+            if(isset($_REQUEST['origen'])){
+                echo "<script type='text/javascript'>
+                window.location.href = 'https://documental.calidadsg.com/Proyectos/?c=usuarios&a=home';
+                </script>";  
+            }else{
+              echo "<script type='text/javascript'>
                 window.location.href = '?c=usuarios&a=home';
-                </script>";
+                </script>";  
+            }
+            
 
         else :
-            echo
-            "<script type='text/javascript'>                 
+            if(isset($_REQUEST['origen'])){
+                echo 0;
+            }else{
+              echo "<script type='text/javascript'>                 
             window.location.href = '?c=usuarios&a=cerrar&fail=0';
-            </script>";
+            </script>"; 
+            }
+           
 
 
         endif;
@@ -84,7 +138,10 @@ class UsuariosController
         $tipoUsuario = new Tipousuario;
         $tipoUsuarios = $tipoUsuario->Tipos_usuarios();
         $usuarios = $this->model->Listar();
-        require_once 'views/layouts/header.php';
+
+        $menu = new MenuController();
+        $menu->layout();
+        //require_once 'views/layouts/header.php';
         require_once 'views/usuarios/index.php';
         require_once 'views/layouts/footer.php';
     }

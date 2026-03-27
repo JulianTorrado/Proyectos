@@ -5,6 +5,8 @@ require_once 'models/Proyecto.php';
 require_once 'models/Etapa.php';
 require_once 'models/Objetivo.php';
 require_once 'models/Actividad.php';
+require_once 'menu.controller.php';
+
 
 class PlantillasController
 {
@@ -18,7 +20,9 @@ class PlantillasController
     public function Index()
     {
         $plantillas = $this->model->Listar();
-        require_once 'views/layouts/header.php';
+        $menu = new MenuController();
+        $menu->layout();
+       // require_once 'views/layouts/header.php';
         require_once 'views/plantillas/index.php';
         require_once 'views/layouts/footer.php';
     }
@@ -61,7 +65,9 @@ class PlantillasController
         $objindex = $objetivo->Obj_index($_REQUEST['pid']);
         $act_pro = $actividades->Act_Pro($_REQUEST['pid']);
         $_SESSION['pid'] = $_REQUEST['pid'];
-        require_once 'views/layouts/header.php';
+        $menu = new MenuController();
+        $menu->layout();
+        //require_once 'views/layouts/header.php';
         require_once 'views/plantillas/gestion.php';
         require_once 'views/layouts/footer.php';
     }

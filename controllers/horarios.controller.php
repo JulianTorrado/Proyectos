@@ -1,6 +1,8 @@
 <?php
 require_once 'models/Auth.php';
 require_once 'models/Horario.php';
+require_once 'models/Usuario.php';
+require_once 'menu.controller.php';
 
 class HorariosController
 {
@@ -15,14 +17,16 @@ class HorariosController
   public function Index()
   {
 
-    require_once 'views/layouts/headerc.php';
+    $menu = new MenuController();
+    $menu->layout();
     require_once 'views/horarios/obtener.php';
     require_once 'views/layouts/footer.php';
   }
   public function Obtener()
   {
     $horario = new Horario();
-    require_once 'views/layouts/headerc.php';
+    $menu = new MenuController();
+    $menu->layout();
 
     require_once 'views/horarios/obtener.php';
     // require_once 'views/layouts/footer.php';
@@ -58,7 +62,9 @@ class HorariosController
   public function Editar()
   {
     $horarios = $this->model->Ver($_REQUEST['hid']);
-   // print_r($horarios);  
+    $funcionario=new Usuario();
+    $funcionarios=$funcionario->Funcionarios();
+    
     require_once 'views/horarios/editar.php';       
   }
 
@@ -82,7 +88,8 @@ class HorariosController
     $horario->dia = $_REQUEST['dia'];
     $horario->hora1 = $_REQUEST['hora1'];
     $horario->hora2 = $_REQUEST['hora2'];
-    $horario->estado = $_REQUEST['estado'];
+   
+    $horario->usuario_id = $_REQUEST['responsable'];
     
     $this->model->Edit0($horario);
   }

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Contacto</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="bootstrap/css/bootstrap.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+  </head>
+  <style>
+  .panel .panel-body {
+      background-color: transparent;
+      
+  }
+  element.style{
+      background-color: #cbc6c6;
+  }
+  label{
+      color:white;
+  }
+      .stylo{
+          background-color: gray;
+          border-radius:15px 15px 0px 0px;
+          font-family: 'Inter', sans-serif;
+      }
+      .blur {
+  background: rgb(249,85,2);
+  /*background: linear-gradient(360deg, rgb(251 250 250) 0%, rgba(251,124,67,1) 50%, rgba(249,140,101,1) 100%););*/
+  background: gray;
+  backdrop-filter: blur(8px); // This be the blur
+  height: 100vh;
+	width: 100%;
+}
+.card {
+	/* other styles */
+	background: rgba(255, 255, 255, .7);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+}
+ .btn_blue{
+     	background:#0D47A1;
+     	color:white;
+ }
+  </style>
+  
+  <body style="background-color: #F58634">
+      
+            <div class="container">   
+  <div class="row">
+      <br>
+      
+          <div class="col-md-12 text-center" style="background-color: #F58634">
+      <form action="" method="POST" name="formContac"  id="formContac">
+        <br>
+      <br>
+            <div class="col-md-4">
+               <label>Nombre De La Empresa</label>
+              <input
+                class="form-control campos"
+                placeholder=""
+                type="text"
+                id="nombreEmpresa"
+                name="nombreEmpresa"
+                required
+              />    
+              <label> Nombre Contacto</label>
+              <input
+                class="form-control"
+                placeholder=""
+                type="text"
+                id="nombres"
+                name="nombres"
+                required
+              />
+              
+            </div>
+            <div class="col-md-4">
+            <!--  <label>Apellidos</label>-->
+              <input
+                class="form-control"
+                placeholder=""
+                type="hidden"
+                id="apellidos"
+                name="apellidos"
+                value="Editar"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label>Correo Electrónico</label>
+              <input
+                class="form-control"
+                placeholder=""
+                type="email"
+                id="correo"
+                name="correo"
+               required
+              />
+            </div>
+            <div class="col-md-6">
+              <label>Número Telefónico De Contacto</label>
+              <input
+                class="form-control"
+                placeholder=""
+                type="number"
+                id="telefono"
+                name="telefono"
+                required
+              />
+            </div>
+          <div class="col-md-12 text-center">
+              
+            <input type="checkbox" id="auth" name="auth" value="" required>
+            <label for="vehicle1">He leido y acepto la <br> </label><a type="button" class="" data-toggle="modal" data-target="#modelId"> politica y tratamiento de datos</a><br>
+        </div>
+          <div class="col-md-12">
+            <a type="" id="guardar" name="guardar" class="btn btn_blue "><span class="glyphicon glyphicon-send" aria-hidden="true"></span>  Enviar</a>
+        </div>
+      </form>
+    </div>
+    </div>
+    </div>
+ 
+      
+    
+    
+    <!-- Modal -->
+            <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Politica y tratamiento de datos</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                        <div class="modal-body">
+                            De conformidad con la normatividad legal vigente aplicable en el país cliente y en concordancia con la Política de Tratamiento de Datos
+                            Personales adoptada <a href='https://documental.calidadsg.com/documental/img/FIRMA%20CALIDADSG/GD-DC-010.pdf' target='_blank'>Ver</a> y la Política de Seguridad y 
+                            Privacidad de la Información definida por FIRMA CALIDADSG Ver actuando de manera libre, 
+                            voluntaria, previa, y expresamente que al diligenciar los datos autorizo a FIRMA CALIDADSG <a href='https://documental.calidadsg.com/documental/img/FIRMA%20CALIDADSG/GD-DC-016.pdf' target='_blank'>Ver</a>  
+                            para que de forma directa, o a travéz de terceros, realice el tratamiento de los mismos, 
+                            el cual consiste en recolectar, almacenar, usar, transferir, suprimir, procesar, compilar, 
+                            intercambiar, dar tratamiento, actualizar y administrar la información suministrada
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    
+  </body>
+  <script src="bootstrap/js/jquery.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</html>
+<script type="text/javascript">
+  $(document).on('click', '#guardar', function(e) {
+    if (document.getElementById('auth').checked){
+        if(($('#nombres').val() !="")  && ($('#apellidos').val() !="") && ($('#correo').val() !="") && ($('#telefono').val() !="")  && ($('#auth').val() =="")){
+            var data = $("#formContac").serialize();
+             $.ajax({
+              data: data,
+              type: "post",
+              url: "bootstrap/procesar.php",
+              success: function(data) {
+                  Swal.fire({
+                      icon: 'success',
+                      title: 'Hemos recibido tu mensaje pronto estaremos en contacto, muchas gracias',
+                      timer: 2500
+                  }, )
+                  
+                    setTimeout(function() {
+                        window.location = '?c=solicitudes&a=index';
+                        // window.location.reload(1);
+                    }, 2000)
+              }
+    
+            })
+        }else{
+            Swal.fire({
+                  icon: 'error',
+                  title: 'Diligencia todos los campos para continuar',
+                  timer: 1500
+              }, )
+        }
+    }else{
+        Swal.fire({
+            icon: 'error',
+            title: 'Por favor acepta la politica y tratamiento de datos',
+            timer: 2500
+            }, )
+              
+        setTimeout(function() {
+         window.location = '?c=solicitudes&a=index';
+         // window.location.reload(1);
+        }, 2000)
+    }
+    
+  });
+</script>

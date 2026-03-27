@@ -1,3 +1,4 @@
+<?php //print_r($procesos) ?>
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -11,6 +12,8 @@
                                 <tr>
                                     <th>Proceso</th>
                                     <th>Sigla</th>
+                                    <th>Empresa</th>
+
                                     <th></th>
                                     
                                 </tr>
@@ -21,21 +24,17 @@
                                         <td><?php echo  $value->proceso;  ?>
                                             
                                         </td>
-                                        <td><?php echo  $value->sigla ?></td>                                        
-                                        <td>
-                                            <a class="" onclick="Edit('<?php echo $value->id ?>')" data-toggle="modal" data-target="#modal-default"><i class="fa fa-edit"></i> </a>
-                                            <a class="" onclick="Borrar('<?php echo $value->id ?>')" ><i class="fa fa-trash"></i> </a>
+                                        <td><?php echo  $value->sigla ?></td>   
+                                        <td><?php echo  $value->nombre.$value->apellidos;  ?>
+
+                                        <td style="vertical-align: middle;text-align: center;">
+                                            <a class="" onclick="Edit('<?php echo $value->proceso_id ?>')" data-toggle="modal" data-target="#modal-default"><i class="fa fa-edit"></i> </a>
+                                            <a class="" onclick="Borrar('<?php echo $value->proceso_id ?>')" ><i class="fa fa-trash"></i> </a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
-                            <tfooter>
-                                <tr>
-                                <th>Proceso</th>
-                                    <th>Sigla</th>
-                                    <th></th>
-                                </tr>
-                            </tfooter>
+                            
                         </table>
                     </div>
                 </div>

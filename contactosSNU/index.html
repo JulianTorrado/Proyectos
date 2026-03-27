@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Contacto</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link
+      href="bootstrap/css/bootstrap.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+  </head>
+  <style>
+  .campos{
+      border:0;
+      border-radius: 5px;
+      border-bottom:3px solid #fff;
+      font-family: 'Roboto', sans-serif;
+      background-color: #fff;
+      color:grey;
+  }
+  select{
+      color:grey;
+      border: 1px solid grey;
+  }
+  .campos:hover{
+      border-bottom:4px solid #fff;
+  }
+  .tratamiento-datos{
+      margin-top:10px;
+  }
+  .fondo{
+      background-color: #F4F6F6;
+  }
+  .formulario{
+      padding:0;
+  }
+  .btn-enviar{
+      margin-top:10px;
+      background:#3e66cb;
+      color:white;
+      font-weight: bold;
+      border:none;
+  }
+  .btn-enviar:hover{
+      background:#C1C1C1;
+      color:#111c22;
+  }
+  .panel .panel-body {
+      background-color: transparent;
+      
+  }
+  
+  element.style{
+      background-color: #cbc6c6;
+  }
+  label{
+      color:grey;
+      font-family: 'Roboto', sans-serif;
+      margin-top: 10px;
+  }
+  .input{
+     
+  }
+  .stylo{
+          background-color: gray;
+          border-radius:15px 15px 0px 0px;
+          font-family: 'Inter', sans-serif;
+      }
+      .blur {
+  background: rgb(249,85,2);
+  /*background: linear-gradient(360deg, rgb(251 250 250) 0%, rgba(251,124,67,1) 50%, rgba(249,140,101,1) 100%););*/
+  background: gray;
+  backdrop-filter: blur(8px); // This be the blur
+  height: 100vh;
+	width: 100%;
+}
+.card {
+	/* other styles */
+	background: rgba(255, 255, 255, .7);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+}
+ .btn_blue{
+     	
+ }
+  </style>
+  
+  <body class="fondo">
+<div class="container p-0">
+    <div class="row">
+        <br>
+        <div class="col-md-12 text-start">
+            <form class="formulario" action="" method="POST" name="formContact" id="formContact">
+                <br>
+                <br>
+                <div class="col-md-4">
+                    <label>Nombre De La Empresa</label>
+                    <input
+                        class="form-control campos"
+                        placeholder=""
+                        type="text"
+                        id="nombreEmpresa"
+                        name="nombreEmpresa"
+                        required
+                    />
+                    <small style="color:#E74C3C;" class="error-message" id="errorNombreEmpresa"></small><br>
+                    <label>Nombre Contacto</label>
+                    <input
+                        class="form-control campos"
+                        placeholder=""
+                        type="text"
+                        id="nombres"
+                        name="nombres"
+                        pattern="[A-Za-zÁ-Úá-úÑñ\s]+"
+                        title="Ingrese solo letras y espacios"
+                        required
+                    />
+                    <small style="color:#E74C3C;" class="error-message" id="errorNombres"></small>
+                    <input
+                        type="hidden"
+                        id="registro"
+                        name="registro"
+                        value="true"
+                        required
+                    />
+                </div>
+                 <div class="col-md-4">
+                    
+                    <label for="paises">Seleccione un país:</label>
+                    <select class="form-control" id="paises" name="paises" required>
+                        <option value="">Seleccionar país</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Bolivia">Bolivia</option>
+                        <option value="Brasil">Brasil</option>
+                        <option value="Chile">Chile</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="México">México</option>
+                        <option value="Paraguay">Paraguay</option>
+                        <option value="Perú">Perú</option>
+                        <option value="Uruguay">Uruguay</option>
+                        <option value="Venezuela">Venezuela</option>
+                    </select>
+                    <small id="errorPais" style="color: red;"></small>
+                 </div>
+                <div class="col-md-4">
+                    <!-- <label>Apellidos</label>-->
+                    <input
+                        class="form-control"
+                        placeholder=""
+                        type="hidden"
+                        id="apellidos"
+                        name="apellidos"
+                        value="Editar"
+                        required
+                    />
+                </div>
+                <div class="col-md-6">
+                    <label>Correo Electrónico</label>
+                    <input
+                        class="form-control campos"
+                        placeholder=""
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                        title="Ingrese un correo electrónico válido"
+                        required
+                    />
+                    <small style="color:#E74C3C;" class="error-message" id="errorCorreo"></small>
+                </div>
+                <div class="col-md-6">
+                    <label>Número Telefónico De Contacto</label>
+                    <input
+                        class="form-control campos"
+                        placeholder=""
+                        type="number"
+                        id="telefono"
+                        name="telefono"
+                        pattern="[0-9]{6,15}"
+                        title="Ingrese un número de teléfono válido (entre 6 y 15 dígitos)"
+                        required
+                    />
+                    <small style="color:#E74C3C;" class="error-message" id="errorTelefono"></small>
+                </div>
+                
+                <div class="col-md-12 tratamiento-datos text-center mt-3">
+                    <input type="checkbox" id="auth" name="auth" value="" required>
+                    <label for="vehicle1">He leído y acepto la <br></label><a type="button" class="" data-toggle="modal" data-target="#modelId"> política y tratamiento de datos</a><br>
+                </div>
+                <div class="col-md-12 text-center">
+                    <button type="button" id="guardar" name="guardar" class="btn btn-default btn-block btn-enviar">
+                        <span class="" aria-hidden="true"></span>Enviar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Política y tratamiento de datos</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                De conformidad con la normatividad legal vigente aplicable en el país cliente y en concordancia con la Política de Tratamiento de Datos
+                Personales adoptada <a href='https://documental.calidadsg.com/documental/app/webroot/img/FIRMA%20CALIDADSG/GD-DC-010.pdf' target='_blank'>Ver</a> y la Política de Seguridad y
+                Privacidad de la Información definida por FIRMA CALIDADSG Ver actuando de manera libre,
+                voluntaria, previa, y expresamente que al diligenciar los datos autorizo a FIRMA CALIDADSG <a href='https://documental.calidadsg.com/documental/app/webroot/img/FIRMA%20CALIDADSG/GD-DC-016.pdf' target='_blank'>Ver</a>
+                para que de forma directa, o a través de terceros, realice el tratamiento de los mismos,
+                el cual consiste en recolectar, almacenar, usar, transferir, suprimir, procesar, compilar,
+                intercambiar, dar tratamiento, actualizar y administrar la información suministrada
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="bootstrap/js/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">
+    $(document).on('click', '#guardar', function(e) {
+        var check = true;
+
+        if (document.getElementById('auth').checked){
+            if ($('#nombres').val() == ""){
+                $('#errorNombres').text('Por favor completa el campo nombre');
+                check = false;
+            } else {
+                $('#errorNombres').text('');
+            }
+        
+            if ($('#nombreEmpresa').val() == ""){
+                $('#errorNombreEmpresa').text('Por favor completa el campo nombre empresa');
+                check = false;
+            } else {
+                $('#errorNombreEmpresa').text('');
+            }
+        
+            var telefono = $('#telefono').val();
+            if (telefono.length < 6 || telefono.length > 15){
+                $('#errorTelefono').text('El teléfono debe tener entre 6 y 15 dígitos');
+                check = false;
+            } else {
+                $('#errorTelefono').text('');
+            }
+            
+            if ($('#correo').val() === "" || !/^[\w-]+(\.[\w-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$/.test($('#correo').val())) {
+                $('#errorCorreo').text('Por favor ingresa un correo electrónico válido');
+                check = false;
+            } else {
+                $('#errorCorreo').text('');
+            }
+            
+             $('#paises').change(function() {
+            var selectedCountry = $(this).val();
+            if (selectedCountry === "") {
+                $('#errorPais').text('Por favor seleccione un país');
+            } else {
+                $('#errorPais').text('');
+            }
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Por favor acepta la política y tratamiento de datos',
+                timer: 2500
+            });
+            check = false;
+        }
+        
+        if (check) {
+            var data = $("#formContact").serialize();
+            $.ajax({
+                data: data,
+                type: "post",
+                url: "bootstrap/procesar.php",
+                success: function(data) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Hemos recibido tu mensaje, pronto un asesor te contactará. ¡Muchas gracias!',
+                        //title: data,
+                        timer: 2500
+                    });
+
+                    setTimeout(function() {
+                        window.location = 'https://softwarenormalizaciondedatos.com/';
+                        window.location.reload(1);
+                    }, 2000);
+                }
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -35,7 +35,7 @@ class SoportesController
         $fileExtension = strtolower(end($fileNameCmps));
         $newFileName = 'soporte_' . $nombre . '.' . $fileExtension;
 
-        $allowedfileExtensions = array('docx', 'pdf');
+        $allowedfileExtensions = array('docx', 'pdf','jpg','jpeg');
         if (in_array($fileExtension, $allowedfileExtensions)) {
 
             // directory in which the uploaded file will be moved
@@ -54,7 +54,7 @@ class SoportesController
         date_default_timezone_set('America/Bogota');
         @$soporte->id = $_REQUEST['id'];
         $soporte->horario_id = $_REQUEST['horario_id'];
-        $soporte->fecha_reg = date('Y-m-d h:i:s a', time());
+        $soporte->fecha_reg = date('Y-m-d h:i:g', time());
         $soporte->enlace = $_REQUEST['enlace'] ;
         if(!empty($dest_path)){
                 $soporte->ruta_soporte = $dest_path;

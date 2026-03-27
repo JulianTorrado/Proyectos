@@ -12,7 +12,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Nombre Archivo</th>
+                        <!-- <th>Nombre Archivo0</th> -->
                         <th>Enlace</th>
                         <th>Tamaño</th>
                         <th>menu</th>
@@ -23,12 +23,13 @@
                    // print_r($soportes);
                     foreach ($soportes as $value) : ?>
                         <tr>
-                            <td>
+                            <!-- <td>
                                 <?php
-                                $filepath = $value->ruta_soporte;
-                                $filename = preg_replace('/^.+[\\\\\\/]/', '', $filepath);  // filename.jpg
-                                echo $filename ?></td>
-                            </td>
+                                // $filepath = $value->ruta_soporte;
+                                // $filename = preg_replace('/^.+[\\\\\\/]/', '', $filepath);  // filename.jpg
+                                // echo $filename ?>
+                                
+                            </td> -->
 
                             <td>
                                 <a href="<?php echo  $value->enlace; ?>" target="_blank"><i class="fa fa-paperclip"></i></a>
@@ -38,14 +39,14 @@
 
                                 <?php 
                                 if(empty($value->enlace)):
-                                    echo filesize($filepath) . ' kb';
+                                    echo @filesize($filepath) . ' kb';
                                 else:
                                     echo "0";
                                 endif;
                                 
                                  ?>
                             </td>
-                            <td class="text-right py-0 align-middle">
+                            <td style="vertical-align: middle;text-align: center;" class="text-right py-0 align-middle">
                                 
                                     <a href="<?php echo $value->ruta_soporte ?>" class="" target="_blank"><i class="fas fa-eye"></i></a>
                                     <a href="?c=soportes&a=eliminar&id=<?php echo $value->id ?>&path=<?php echo $value->ruta_soporte ?>" onclick="return confirm('Estás seguro que deseas eliminar el soporte?');" class=""><i class="fas fa-trash"></i></a>

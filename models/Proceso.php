@@ -6,6 +6,9 @@ class Proceso
     public $proceso;
     public $sigla;
 
+    public $cliente_id;
+    public $proceso_id;
+
 
     public function __CONSTRUCT()
     {
@@ -16,6 +19,27 @@ class Proceso
         }
     }
 
+    public function ListarIndex()
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT *,p.id as proceso_id  FROM procesos p JOIN clientes c ON p.cliente_id = c.id;");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+    public function ListarPorCliente($id)
+    {
+
+        try {
+            $stm = $this->pdo->prepare("SELECT * FROM procesos WHERE procesos.cliente_id = $id");
+            $stm->execute();
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
     public function Listar()
     {
 
@@ -45,11 +69,12 @@ class Proceso
 
         try {
 
-            $stm = "INSERT INTO procesos(proceso, sigla)
-                             VALUES(?, ?)";
+            $stm = "INSERT INTO procesos(proceso, sigla, cliente_id)
+                             VALUES(?, ?, ?)";
             $this->pdo->prepare($stm)->execute(array(
                 $data->proceso,
                 $data->sigla,
+                $data->cliente_id,
             ));
         } catch (Exception $e) {
             die($e->getMessage());
@@ -61,9 +86,10 @@ class Proceso
         $id = $data->id;
         $proceso = $data->proceso;
         $sigla = $data->sigla;
+        $cliente_id = $data->cliente_id;
 
         try {
-            $sql = "UPDATE procesos SET proceso='$proceso', sigla='$sigla'  WHERE id = $id";
+            $sql = "UPDATE procesos SET proceso='$proceso', sigla='$sigla', cliente_id='$cliente_id'  WHERE id = $id";
             $this->pdo->prepare($sql)->execute();
         } catch (Exception $e) {
             die($e->getMessage());

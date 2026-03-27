@@ -2,6 +2,8 @@
 require_once 'models/Auth.php';
 require_once 'models/Objetivo.php';
 require_once 'models/Proyecto.php';
+require_once 'menu.controller.php';
+
 
 class ObjetivosController
 {
@@ -44,7 +46,9 @@ class ObjetivosController
     {
         $Etapas = new Objetivo();
         $proyecto = $this->model->Obtener($_REQUEST['pid']);
-        require_once 'views/layouts/header.php';
+        $menu = new MenuController();
+        $menu->layout();
+       // require_once 'views/layouts/header.php';
         require_once 'views/Etapas/gestion.php';
         // require_once 'views/layouts/footer.php';
 

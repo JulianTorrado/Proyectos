@@ -10,6 +10,11 @@ class Etapa_plantilla
     public $hora1;
     public $hora2;
     public $dias;
+    public $proyecto_id;
+    public $fecha;
+    public $dia;
+
+    //public $prioridad;
    
 
 
@@ -44,6 +49,34 @@ class Etapa_plantilla
             die($e->getMessage());
         }
     }
+
+    public function RegistrarAct(Etapa_plantilla $data)
+    {
+        try {
+            $stm = "INSERT INTO etapa_plantillas(etapa_id, proyecto_id, usuario_id, fecha, dia, hora1, hora2)
+                    VALUES(:etapa_id, :proyecto_id, :usuario_id, :fecha, :dia, :hora1, :hora2)";
+    
+            $stmt = $this->pdo->prepare($stm);
+            
+            $stmt->bindParam(':etapa_id', $data->etapa_id);
+            $stmt->bindParam(':proyecto_id', $data->proyecto_id);
+            $stmt->bindParam(':usuario_id', $data->usuario_id);
+            $stmt->bindParam(':fecha', $data->fecha);
+            $stmt->bindParam(':dia', $data->dia);
+            $stmt->bindParam(':hora1', $data->hora1);
+            $stmt->bindParam(':hora2', $data->hora2);
+    
+            $stmt->execute();
+    
+            // Obtener el ID del último registro insertado
+            $lastInsertedId = $this->pdo->lastInsertId();
+    
+            return $lastInsertedId;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+    
     public function Actualizar(Etapa_plantilla $data)
     {
         $id = $data->id;
